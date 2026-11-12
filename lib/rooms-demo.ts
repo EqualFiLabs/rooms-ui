@@ -26,22 +26,32 @@ export const demoRound: RoundSnapshot = {
   winningRoom: null,
 };
 
-export function sampleRoundForPhase(phase: RoundPhase): RoundSnapshot {
-  if (phase === "Open" || phase === "Locked") return { ...demoRound, phase };
+export function sampleRoundForPhase(phase: RoundPhase, roomCount = demoRound.roomTicketCounts.length): RoundSnapshot {
+  const roomTicketCounts = Array.from(
+    { length: roomCount },
+    (_, index) => demoRound.roomTicketCounts[index % demoRound.roomTicketCounts.length],
+  );
+  const round: RoundSnapshot = {
+    ...demoRound,
+    phase,
+    roomTicketCounts,
+    ticketSupply: roomCount * 200,
+    receiptsCents: roomTicketCounts.reduce((sum, count) => sum + count, 0) * demoRound.ticketPriceCents,
+  };
+  if (phase === "Open" || phase === "Locked") return round;
 
-  const unplaced = demoRound.ticketSupply - ticketsPlaced(demoRound);
-  const perRoom = Math.floor(unplaced / demoRound.roomTicketCounts.length);
-  const remainder = unplaced % demoRound.roomTicketCounts.length;
-  const roomTicketCounts = demoRound.roomTicketCounts.map(
+  const unplaced = round.ticketSupply - ticketsPlaced(round);
+  const perRoom = Math.floor(unplaced / roomCount);
+  const remainder = unplaced % roomCount;
+  const fullRoomCounts = roomTicketCounts.map(
     (count, index) => count + perRoom + (index < remainder ? 1 : 0),
   );
 
   return {
-    ...demoRound,
-    phase,
-    roomTicketCounts,
-    receiptsCents: demoRound.receiptsCents + unplaced * demoRound.ticketPriceCents,
-    winningRoom: phase === "Settled" ? 3 : null,
+    ...round,
+    roomTicketCounts: fullRoomCounts,
+    receiptsCents: round.receiptsCents + unplaced * round.ticketPriceCents,
+    winningRoom: phase === "Settled" ? Math.min(3, roomCount - 1) : null,
   };
 }
 

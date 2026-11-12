@@ -456,6 +456,10 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   gap: 10px;
 }
 
+.dashboard.two-rooms .rooms-grid {
+  grid-template-columns: repeat(2,minmax(0,1fr));
+}
+
 .room {
   background: #253229;
   border: 1px solid #506252;
@@ -469,6 +473,10 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   justify-content: space-between;
   position: relative;
   transition: transform .2s,border-color .2s,background .2s,box-shadow .2s;
+}
+
+.dashboard.two-rooms .room {
+  min-height: 220px;
 }
 
 .room:hover {
@@ -715,6 +723,74 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   color: #7b897a;
   margin-top: 9px;
   line-height: 1.4;
+}
+
+.room-comparison {
+  background: #dce6d7;
+  border: 1px solid #c7d7c2;
+  border-radius: 12px;
+  padding: 13px;
+  margin: 0 0 19px;
+}
+
+.room-comparison-head,.room-comparison-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.room-comparison-head span {
+  color: #657967;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.room-comparison-head strong {
+  color: #2c4b2e;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.room-comparison-bars {
+  display: flex;
+  align-items: end;
+  gap: 3px;
+  height: 62px;
+  margin: 15px 0 8px;
+}
+
+.room-comparison-bars i {
+  background: #c4d3bd;
+  border-radius: 4px;
+  display: flex;
+  flex: 1;
+  align-items: end;
+  height: 100%;
+  overflow: hidden;
+}
+
+.room-comparison-bars i span {
+  background: #88a778;
+  display: block;
+  width: 100%;
+  transition: height .25s;
+}
+
+.room-comparison-bars i.selected {
+  outline: 2px solid #315a32;
+  outline-offset: 2px;
+}
+
+.room-comparison-bars i.selected span {
+  background: #315a32;
+}
+
+.room-comparison-foot {
+  color: #708270;
+  font-size: 10px;
 }
 
 .insight {
@@ -1026,31 +1102,10 @@ button:focus-visible,a:focus-visible,input:focus-visible {
     border-right: 0;
   }
   .detail {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 28px;
-  }
-  .detail-head,.detail h3,.detail-sub,.occupancy,.insight,.ticket-control,.projection,.caveat {
-    grid-column: span 1;
+    display: block;
   }
   .detail h3 {
     margin-top: 24px;
-  }
-  .detail-head,.detail h3,.detail-sub,.occupancy,.insight {
-    grid-column: 1;
-  }
-  .ticket-control,.projection,.caveat {
-    grid-column: 2;
-  }
-  .ticket-control {
-    grid-row: 1 / span 4;
-    margin: 0;
-  }
-  .projection {
-    grid-row: 5 / span 2;
-  }
-  .detail .caveat {
-    grid-row: 7;
   }
   .steps {
     grid-template-columns: 1fr 1fr;
@@ -1146,6 +1201,9 @@ button:focus-visible,a:focus-visible,input:focus-visible {
     padding: 8px;
     border-radius: 7px;
   }
+  .dashboard.two-rooms .room {
+    min-height: 145px;
+  }
   .room .num {
     font-size: 9px;
   }
@@ -1214,11 +1272,22 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   }
 }
 
+@media(max-width:420px) {
+  .rooms-grid {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .room-comparison-head {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
 @media(prefers-reduced-motion:reduce) {
   html {
     scroll-behavior: auto;
   }
-  .room,.progress i {
+  .room,.progress i,.room-comparison-bars i span {
     transition: none;
   }
 }
