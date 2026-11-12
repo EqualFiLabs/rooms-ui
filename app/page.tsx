@@ -1,5 +1,4 @@
 import RoomExplorer from "@/components/room-explorer";
-import { demoRound } from "@/lib/rooms-demo";
 
 export default function Home() {
   return (
@@ -27,7 +26,7 @@ export default function Home() {
           </div>
           <div className="hero-right">
             <div className="mini-idea">Same odds.<br /><strong>Different company.</strong></div>
-            <div className="round-badge" aria-hidden="true"><span>EXPLORE</span><b>↘</b><i>{demoRound.roomTicketCounts.length} ROOMS</i></div>
+            <div className="round-badge" aria-hidden="true"><span>EXPLORE</span><b>↘</b><i>ROOMS</i></div>
           </div>
         </section>
 
