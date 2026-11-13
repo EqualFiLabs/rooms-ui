@@ -1,0 +1,106 @@
+const roomsConfig = [
+  { name: "paymentToken", type: "address" },
+  { name: "baseTicketPrice", type: "uint96" },
+  { name: "ticketSupply", type: "uint256" },
+  { name: "salesDuration", type: "uint32" },
+  { name: "randomnessDelay", type: "uint32" },
+  { name: "maxTicketsPerPurchase", type: "uint32" },
+  { name: "potBps", type: "uint16" },
+  { name: "operatorBps", type: "uint16" },
+  { name: "settlementTipBps", type: "uint16" },
+  { name: "roomCount", type: "uint8" },
+] as const;
+
+export const roomsViewAbi = [
+  {
+    type: "function",
+    name: "round",
+    stateMutability: "view",
+    inputs: [{ name: "id", type: "uint256" }],
+    outputs: [{
+      name: "",
+      type: "tuple",
+      components: [
+        { name: "config", type: "tuple", components: roomsConfig },
+        { name: "configVersion", type: "uint64" },
+        { name: "integrationVersion", type: "uint64" },
+        { name: "openedAt", type: "uint64" },
+        { name: "closesAt", type: "uint64" },
+        { name: "soldOutAt", type: "uint64" },
+        { name: "effectiveClose", type: "uint64" },
+        { name: "settledAt", type: "uint64" },
+        { name: "claimDeadline", type: "uint64" },
+        { name: "deadlineDrandRound", type: "uint64" },
+        { name: "drandRound", type: "uint64" },
+        { name: "status", type: "uint8" },
+        { name: "winningRoom", type: "uint8" },
+        { name: "prizeExpired", type: "bool" },
+        { name: "totalTickets", type: "uint256" },
+        { name: "receipts", type: "uint256" },
+        { name: "rolloverIn", type: "uint256" },
+        { name: "payoutPerTicket", type: "uint256" },
+        { name: "prizeRemaining", type: "uint256" },
+        { name: "applicationSeed", type: "bytes32" },
+      ],
+    }],
+  },
+  {
+    type: "function",
+    name: "roundPhase",
+    stateMutability: "view",
+    inputs: [{ name: "id", type: "uint256" }],
+    outputs: [{ name: "", type: "uint8" }],
+  },
+  {
+    type: "function",
+    name: "roomTicketCounts",
+    stateMutability: "view",
+    inputs: [{ name: "id", type: "uint256" }],
+    outputs: [{ name: "", type: "uint256[]" }],
+  },
+  {
+    type: "function",
+    name: "quotePurchase",
+    stateMutability: "view",
+    inputs: [{ name: "id", type: "uint256" }, { name: "quantity", type: "uint256" }],
+    outputs: [
+      { name: "epoch", type: "uint8" },
+      { name: "multiplierBps", type: "uint16" },
+      { name: "unitPrice", type: "uint256" },
+      { name: "payment", type: "uint256" },
+      { name: "remaining", type: "uint256" },
+    ],
+  },
+  {
+    type: "function",
+    name: "previewRoomPayout",
+    stateMutability: "view",
+    inputs: [
+      { name: "id", type: "uint256" },
+      { name: "room", type: "uint8" },
+      { name: "additionalTickets", type: "uint256" },
+    ],
+    outputs: [
+      { name: "projectedPot", type: "uint256" },
+      { name: "projectedRoomTickets", type: "uint256" },
+      { name: "projectedPayoutPerTicket", type: "uint256" },
+    ],
+  },
+] as const;
+
+export const tokenAbi = [
+  {
+    type: "function",
+    name: "decimals",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint8" }],
+  },
+  {
+    type: "function",
+    name: "symbol",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "string" }],
+  },
+] as const;
