@@ -116,16 +116,29 @@ export default function RoomExplorer() {
     return <section id="explore" className="shell" aria-live="polite">Checking data source…</section>;
   }
 
+  if (live.kind === "error") {
+    return (
+      <section id="explore" className="shell" aria-labelledby="explore-heading">
+        <div className="data-error" role="alert">
+          <span className="eyebrow">ROOMS · LIVE ROUND</span>
+          <h2 id="explore-heading">Live round unavailable</h2>
+          <p>We couldn’t load the configured round. Try again in a moment.</p>
+          <button type="button" onClick={() => { setLive({ kind: "checking" }); setRefreshKey((key) => key + 1); }}>
+            Retry live data
+          </button>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section id="explore" className="shell" aria-labelledby="explore-heading">
       <div className="demo-notice">
-        <b>{live.kind === "live" ? "Live round · read only" : live.kind === "error" ? "Live data unavailable" : "Interactive concept"}</b>
+        <b>{live.kind === "live" ? "Live round · read only" : "Interactive concept"}</b>
         <span>
           {live.kind === "live"
             ? "Room counts and previews come from the configured Rooms contract. This page does not connect a wallet or submit transactions. "
-            : live.kind === "error"
-              ? "Showing sample data. This page does not connect a wallet or submit transactions. "
-              : "All numbers below are sample data. This page does not connect a wallet or show live balances. "}
+            : "All numbers below are sample data. This page does not connect a wallet or show live balances. "}
           <a href="https://github.com/EqualFiLabs/rooms/blob/main/docs/protocol.md" target="_blank" rel="noopener noreferrer">Read the protocol ↗</a>
         </span>
       </div>
