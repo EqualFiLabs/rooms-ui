@@ -254,6 +254,45 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   font-weight: 700;
 }
 
+.data-error {
+  min-height: 360px;
+  padding: clamp(32px,6vw,72px);
+  background: var(--dark);
+  border-radius: 28px;
+  color: #f5f5eb;
+}
+
+.data-error .eyebrow {
+  color: var(--lime);
+}
+
+.data-error h2 {
+  font-family: Georgia,Times,serif;
+  font-size: clamp(36px,5vw,64px);
+  font-weight: 400;
+  letter-spacing: -.05em;
+  margin: 20px 0 12px;
+}
+
+.data-error p {
+  color: #bec8b6;
+  margin: 0 0 28px;
+}
+
+.data-error button {
+  background: var(--lime);
+  border: 0;
+  border-radius: 999px;
+  color: var(--dark);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 12px 18px;
+}
+
+.data-error button:hover {
+  background: #e4fa9b;
+}
+
 .dashboard {
   background: var(--dark);
   border-radius: 28px;
