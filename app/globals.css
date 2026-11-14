@@ -395,7 +395,7 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   font-weight: 700;
 }
 
-.phase-preview select {
+.phase-preview select,.phase-preview button {
   appearance: auto;
   background: #27372a;
   border: 1px solid #789172;
@@ -403,6 +403,10 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   color: #fff;
   font: inherit;
   padding: 7px 10px;
+}
+
+.phase-preview button {
+  cursor: pointer;
 }
 
 .phase-preview span {
@@ -424,6 +428,7 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   font-weight: 400;
   display: block;
   margin: 5px 0 1px;
+  overflow-wrap: anywhere;
 }
 
 .metric small {
@@ -817,6 +822,7 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   font-family: Georgia,Times,serif;
   font-weight: 400;
   font-size: 28px;
+  overflow-wrap: anywhere;
 }
 
 .ticket-control {
@@ -925,6 +931,7 @@ button:focus-visible,a:focus-visible,input:focus-visible {
   letter-spacing: -.06em;
   font-size: 48px;
   margin: 8px 0 4px;
+  overflow-wrap: anywhere;
 }
 
 .projection small {

@@ -35,7 +35,7 @@ export default function Home() {
         <section id="how" className="how shell" aria-labelledby="how-heading">
           <div className="how-head">
             <div><div className="eyebrow">A SIMPLE GAME OF CHOICE</div><h2 id="how-heading">The room changes<br />the story.</h2></div>
-            <p>Explore the crowd, compare a conditional payout, and see how joining a room changes the split. The game logic lives onchain once launched.</p>
+            <p>Explore the crowd, compare a conditional payout, and see how joining a room changes the split. The game logic is defined in the Rooms contracts.</p>
           </div>
           <div className="steps">
             <div className="step" data-number="01"><span className="step-no">01 / EXPLORE</span><h3>See the crowd</h3><p>Each room displays its ticket count. Public occupancy gives everyone the same view of where tickets have gathered.</p></div>
@@ -51,7 +51,7 @@ export default function Home() {
             <span className="brand-mark" aria-hidden="true" style={{ width: 26, height: 26, padding: 5, border: "1px solid #839a78" }}><i /><i /><i /><i /></span>
             rooms
           </div>
-          <small>Interactive concept for EqualFi Labs · Sample data only</small>
+          <small>Rooms UI for EqualFi Labs · Read-only preview</small>
           <small><a href="https://github.com/EqualFiLabs/rooms" target="_blank" rel="noopener noreferrer">Contracts ↗</a></small>
         </div>
       </footer>
