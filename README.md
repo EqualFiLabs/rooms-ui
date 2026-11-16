@@ -11,7 +11,15 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000. Run `npm run typecheck` and `npm run build` before sharing changes.
+Open http://localhost:3000. Run `npm run typecheck`, `npm test`, and `npm run build` before sharing changes.
+
+## Playhouse ownership prototype
+
+Open `/playhouse` to explore a procedural room with empty, 24-ticket, and 2,400-ticket sample crowds. Choose a room, hover or focus a figure to inspect its wallet, and click or tap to pin the details. The wallet list provides the same ownership inspection without navigating individual figures. Escape clears the pinned selection.
+
+Small crowds show one figure per ticket. Dense crowds use labelled groups belonging to one wallet, with exact ticket totals. Blue figures belong to your sample wallet. Adding a sample purchase updates the crowd and ownership details while preserving a pinned wallet. Narrow screens use fewer labelled groups and retain the full wallet list; reduced-motion preferences disable arrival effects.
+
+All Playhouse wallets, purchases, and economics are synthetic and explicitly labelled. This route makes no live reads, connects no wallet, and submits no transactions. The existing read-only round page remains available separately. See [the ownership data contract](docs/ownership-data.md) for verified contract capabilities and the boundary for subsequent live integration.
 
 ## Live round reads
 
