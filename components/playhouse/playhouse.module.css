@@ -987,12 +987,13 @@
   }
   .architecture {
     position: absolute;
-    inset: 40px 0 0;
-    height: calc(100% - 40px);
+    inset: 40px 0 auto;
+    height: auto;
+    aspect-ratio: 900/620;
   }
   .figureLayer {
     top: 40px;
-    height: calc(100% - 40px);
+    height: auto;
     bottom: auto;
     aspect-ratio: 900/620;
   }

@@ -9,7 +9,7 @@ export default function Home() {
           <span>rooms<small>by EqualFi Labs</small></span>
         </a>
         <nav className="nav" aria-label="Main navigation">
-          <a href="/playhouse">Playhouse preview</a>
+          <a className="playhouse-preview" href="/playhouse">Playhouse preview</a>
           <a href="#explore">Explore rooms</a>
           <a href="#how">How it works</a>
           <a className="github" href="https://github.com/EqualFiLabs/rooms" target="_blank" rel="noopener noreferrer">
